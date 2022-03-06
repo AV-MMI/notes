@@ -88,7 +88,7 @@ const johnDoe = personFactory("John Doe", "Unknown", 32, "male");
  
  Another of the bugs is that the **constructor property** of an object is set by the engine exactly once. When we define a --constructor-- function, and then use it to define a new object, the **constructor property** of our recent create object will point to the --constructor-- function that created it. But, if we change the **prototype property** of our --constructor-- function to some other object, without explicitly setting our object **constructor property** then al the objects created by the function will have their **constructor property** set to ***Object** --which is default--.
  
-### 1.1_ Without changing the prototype of our constructor function.
+#### 1.1. Without setting the prototype of our constructor function.
  
  
  ```
@@ -101,9 +101,8 @@ const johnDoe = personFactory("John Doe", "Unknown", 32, "male");
  console.log(aDoe.constructor); // [Function: DummyPerson]
  ```
  
- []Find out if this can happen with Factory Functions...
  ---
-### 1.2_ Changing the prototype of our constructor function.
+#### 1.2. Setting the prototype of our constructor function.
 
 ```
 function DummyPerson(name, age){
@@ -228,9 +227,48 @@ john.specie() // Homo Sapiens
 
 ### 7. Explain the module pattern.
 
+
 ---
 
 ### 8. Describe IIFE. What does it stand for?.
+
+ IIFE stands for **Inmmediately Invoked Function Expression**. In Javascript there are two ways to created a function: through **function declaration** or a **function expression**. 
+ 
+ A **function declaration** is the normal way we used to create a named function.
+ 
+ ```
+ function sayHi(){
+ 	console.log("Hi");
+ };
+ ```
+ 
+A **function expression** is when we are assigning a function to a variable or property.
+
+```
+const sayHi = function(){
+	console.log("Hi");
+};
+```
+
+ The thing is, that we can also convert a *function declaration* into a *function expression* without assigning it to a variable or property. We can do this wrapping our *function declaration* with parenthesis --grouping operator--.
+
+```
+(function sayHi(){
+	console.log("Hi");
+});
+``` 
+
+ An expression return a value. If we want to invoke this expression right away we just need to add a couple of parenthesis at the end of our expression.
+ 
+ ```
+ (function sayHi(){
+ console.log("Hi");
+ })(); // Hi
+ ```
+
+ Even though i named this *functions expressions* one of the use cases is that using IIFE we avoid polluting the global namespace. For example, if we need some code that will only be used once and we will never use it again, we can call it with an IIFE. Sure, we could do that with a named function, but appart from the fact that we would be polluting the global namespace, the function itself wouldn't be as self-documenting as an IIFE can be.
+
+ Also, we could use IIFE to create private and public variables an methods. 
 
 ---
 
