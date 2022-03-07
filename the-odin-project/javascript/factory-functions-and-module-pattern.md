@@ -227,6 +227,50 @@ john.specie() // Homo Sapiens
 
 ### 7. Explain the module pattern.
 
+ The module pattern offers us a way in which we can organize our code and make it cleaner. One of the advantages that the module pattern presents is that it allow us to have private methods and variables along with public ones --that are the ones we are gonna return--. This also let us avoid problems with the namespace.
+ 
+  The disadvantages of the Module pattern are that, if we want to change the visibility of a public method --or property-- we would need to change each place in which this method was used. We also cannot access private members that are added to the object after it was initialize it.
+  
+#### 7.1 Module Syntax:
+
+ The concept is exactly the same as the *factory function*, but instead of creating a factory that we are gonna use to create multiple objects, the module pattern wraps the *function factory* in an IIFE.
+  
+  ```
+const myModule = (function (){
+  	//Private
+  	let _counter = 0;
+  	
+  	const _countriesArr = [];
+  	
+    const _upperCase = (text) => {
+  		return text.toUpperCase();
+  	};
+  	
+  	//Public
+    const addCountry = (country) => {
+  		_countriesArr.push([_upperCase(country), _counter++]);
+  	};
+  	
+    const showCountries = () => {
+  		console.log(_countriesArr);
+  	};
+  	
+    const resetCounter = () => {
+  		_counter = 0;
+  	};
+  	
+  	return {addCountry, showCountries, resetCounter};
+  })()
+
+myModule.addCountry("usa");
+myModule.addCountry("argentina");
+myModule.showCountries(); // [ [ 'USA', 0 ], [ 'ARGENTINA', 1 ] ]
+myModule.resetCounter();
+myModule.addCountry("chile");
+myModule.showCountries(); // [ [ 'USA', 0 ], [ 'ARGENTINA', 1 ], [ 'CHILE', 0 ] ]
+console.log(myModule._counter) // undefined
+
+  ```
 
 ---
 
