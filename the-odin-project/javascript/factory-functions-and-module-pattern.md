@@ -331,8 +331,7 @@ const sayHi = function(){
  3. Object literal notation.
  4. Nested namespacing.
  5. Immediately-Invoke-Functions (IIFE).
- 6. Expressions.
- 7. Namespace injection.
+ 6. Namespace injection.
  
 #### 9.1. Single Global Variables.
 
@@ -367,7 +366,7 @@ const myApp_methodA = {};
  
 #### 9.3. Object Literal Notation.
 
- We can use an object to organize our code. This can be thought as an object containing a series of key-value pairs that represent new namespaces with its own methods and properties.
+ We can use an object to organize our code. This can be thought as an object containing a series of **key-value pairs** that represent new namespaces with its own methods and properties.
  
  ```
  const myApp = {
@@ -375,7 +374,7 @@ const myApp_methodA = {};
  		...
  	},
  	
- 	newUser: function(){
+ 	newUser: function(name, psswd){
  		...
  	},
  	
@@ -401,10 +400,88 @@ const myApp_methodA = {};
   It could occur that by mistake we redefine a variable, or cause a name collision. We can "implement" a test that take into account the existence of a variable by the same name, so the chances of a collision occurring are significantly reduce.
   
 ```
-let myApp = myApp || {}; /*1*/
+var myApp = myApp || {}; /*1*/
 if(!myApp){ myApp = {} }; /*2*/
-myApp = (myApp === undefined) ? {} : myApp; /*3*/
+var myApp = (myApp === undefined) ? {} : myApp; /*3*/
 ```
  
+ We could also declare our objects with **const**. since this test only work with **var**.
  
  
+#### 9.4. Nested Namespacing.
+
+ Is a common pattern that is an **extension** of the **object literal pattern**. It offers a lower risk of collision due to the fact that even if a namespace already exist, it's unlikely the same nested children do.
+
+```
+	myApp.account.globalSettings.logInfo = function(){
+		...
+	};
+	
+	myApp["account"]["globalSettings"]["logInfo"] = function(){
+		...
+	};
+```
+
+ Both options are easily readable and organized. The disadvantage of this, if that our browser's Javascript engine first will have to first locate the object and then start digging down until it get to the method or property we wish to use. However, the performance differences between *single object namespacing* vs the nested approach is quite negligible.
+
+ We can also test whether certain property or method exist as we did with the **object literal pattern** using the following test:
+ 
+ ```
+  myApp.account.globalSettings.logInfo = ...globalSettings.logInfo || {}
+ 
+ if(!myApp.account.globalSettings.logInfo){ /*2*/
+ 	...globalSettings.logInfo = {};
+ };
+ 
+ myApp.account.globalSettings.logInfo = (...globalSettings.logInfo === "undefined") ? {} : ...globalSettings.logInfo; /*3*/
+ ```
+ 
+#### 9.5. Immediately Invoked Function Expressions (IIFE).
+
+ The concept is the same of a normal IIFE, but instead of running some code that we are not gonna use it again, we use the IIFE to extend an object.
+ 
+```
+const myApp = {};
+
+(function ( o ){
+	o.getUser = function(){
+		...
+	};
+	
+	o.newUser = function(name, psswd){
+		...
+	};
+	
+	o.account = {
+		globalSettings = {
+			...
+		},
+	};
+	
+})( myApp );
+```
+
+
+#### 9.6 Namespace injection.
+ 
+ Is another variation of the IIFE in which instead of passing an object, we directly "inject" the methods and the properties from within a function wrapper using *this* as a namespace proxy. This offers us an easy application of functional behavior to multiple objects or namespaces. Like for example, when applying a set of base methods that are goona be built later, like getters and setters.
+ 
+ The disadvantage of this pattern is tha there other patterns that could deliver the same result with an easier or more optimal approach.
+ 
+```
+const myApp = {};
+
+(function(){
+	let val = 0;
+	
+	this.getValue = function(){
+		return val;
+	};
+	
+	this.setValue = function(newVal){
+		val = newVal;
+	};
+	
+	this.utils = {};
+}).apply( myApp );
+```
