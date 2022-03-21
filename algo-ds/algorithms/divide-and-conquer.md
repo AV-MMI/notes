@@ -7,7 +7,7 @@
  
 ## Examples
 
-### Merge sorge algorithm.
+### Merge sort algorithm.
 
 ![Merge sort](../img/merge-sort-diagram.png)
 
