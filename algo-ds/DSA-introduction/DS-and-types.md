@@ -95,3 +95,16 @@
  Similar to graph, a tree data structure is a collection of nodes and edges. The difference is that in this data structure the can only be one edge between to vertices.
  
  ![Tree Data Structure](../img/tree_dsa.webp)
+ 
+ 
+ 
+### Major differences between Linear and Non-linear Data Structures
+
+| Linear Data Structures      | Non-linear Data Structures |
+| ----------- | ----------- |
+|The data elements are arranged in a sequential order, that is, one after the other.| The data elements are arranged in non-sequential order, that is, in a hierarchical manner.|
+|All the items are present in a single layer|The items are present at different layers|
+|It can be traversed on a single run, that means that if we start from the first element, we can go through all the elements until we reach the last element.|It requires multiples runs, that means that if we start from the first element, it might not be possible to go through all the other elements in a single pass.|
+|The memory utilization is not efficient.|The different structures use the memory in different ways depending of the need.|
+|The time complexity increases with the data size|Time complexity remains the same|
+|Examples of this kind of Data Structures are: Array, Stack, Queue.|Examples of this kind of Data Structures are: Tree, Graph, Map|
