@@ -8,4 +8,4 @@
  
  The Asymptotic Analysis is the study of the changes in the performance of an algorithm as the size of it input also changes.
  
- The performance of an algorithm is not always constant, as it can change in based to the size of the input of our algorithm, although there are some algorithms knowns as **Constant-time Algorithms** whose performance don't depend on the size of the input.
+ **The performance of an algorithm** is not always constant, as it can change in based to the size of the input of our algorithm, although there are some algorithms knowns as **Constant-time Algorithms** whose performance don't depend on the size of the input.
