@@ -8,4 +8,27 @@
  
  The Asymptotic Analysis is the study of the changes in the performance of an algorithm as the size of it input also changes.
  
- **The performance of an algorithm** is not always constant, as it can change in based to the size of the input of our algorithm, although there are some algorithms knowns as **Constant-time Algorithms** whose performance don't depend on the size of the input.
+ **The performance of an algorithm** is not always constant, as it can change in based to the size of the input of our algorithm, although there are some algorithms knowns as **constant-time algorithms** whose performance don't depend on the size of the input.
+
+## Asymptotic notations
+ Asymptotic notations are the mathematical notation used to represent or to describe the running of an algorithm when the input tends towards a certain value or limit.
+ 
+ In the *Bubble sort* algorithm --which is a sorting algorithm that help us sorting an array incrementally. 		such that if two elements are adjacents and  **n<sub>0</sub> > n<sub>1<sub>** swaps the order of the elements such that now **n<sub>0</sub> < n<sub>1</sub>** -- when the input array is already sorted the time that it takes to run is linear, *i.e* **the best case complexity.**
+ 
+ On the contrary when our input is in a reversed order (decrementally for example) then the running of the bubble sort algorithm will take the maximum time to sort the elements *i.e* **the worst case complexity.**
+ 
+ If our input array is neither sorted nor reversed, it will take an average time for our bubble sort to sort the elements of the array. These durations are denoted using asymptotic notations.
+ 
+ There are mainly three asymptotic notations:
+### Big-O (O-notation)
+ represents the upper bound of the running time that our given algorithm takes. **It gives the worst case complexity**
+ 
+ ![Big-O](../img/big0.webp)
+ 
+ ```
+ O(g(n)) = { f(n): there exist positive constants c and n0 
+such that 0 <= f(n) <= cg(n) for all n >= n0 }
+ ```
+### Omega notation
+### Theta notation
+
