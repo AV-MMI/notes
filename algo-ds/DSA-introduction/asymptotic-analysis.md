@@ -21,7 +21,7 @@
  
  There are mainly three asymptotic notations:
 ### Big-O (O-notation)
- represents the upper bound of the running time that our given algorithm takes. **It gives the worst case complexity**
+ Represents the upper bound of the running time that our given algorithm takes. **It gives the worst case complexity**
  
  ![Big-O](../img/big0.webp)
  
@@ -29,6 +29,25 @@
  O(g(n)) = { f(n): there exist positive constants c and n0 
 such that 0 <= f(n) <= cg(n) for all n >= n0 }
  ```
-### Omega notation
-### Theta notation
+### Omega notation (Ω-notation)
+ Represents the lower bound of the running tima that our algorithm takes. *i.e* **The worst case complexity**
+ 
+ ![Omega Notation](../img/omega.webp)
 
+ ```
+ Ω(g(n)) = { f(n): there exist positive constant c and n0
+ such that 0 <= cg(n) <= f(n) for all n >= 0 }
+ ```
+### Theta notation (Θ-notation)
+ Represents both bound, the upper and the lower. And its because of this that this notation is usually used to represent the average time that a given algorithm takes to run. *i.e* **The average case complexity**
+ 
+ 
+ ![Theta Notation](../img/theta.webp)
+
+
+```
+Θ(g(n)) = { f(n): there exist positive constants c1, c2 and n0
+such that 0 <= c1g(n) <= f(n) <= c2g(n) for all n >= n0 }
+```
+
+ If a function `f(n)` that belongs to the set `Θ(g(n))`. If there exist positive constants c<sub>1</sub>, c<sub>2</sub> such that `f(n)` lies in between c<sub>1</sub>g(n) and c<sub>2</sub>g(n) for all `n >= n0` then `f(n)` is said to be asymptotically tight bound.
