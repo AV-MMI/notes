@@ -50,4 +50,4 @@ such that 0 <= f(n) <= cg(n) for all n >= n0 }
 such that 0 <= c1g(n) <= f(n) <= c2g(n) for all n >= n0 }
 ```
 
- If a function `f(n)` that belongs to the set `Θ(g(n))`. If there exist positive constants c<sub>1</sub>, c<sub>2</sub> such that `f(n)` lies in between c<sub>1</sub>g(n) and c<sub>2</sub>g(n) for all `n >= n0` then `f(n)` is said to be asymptotically tight bound.
+ In the case that our function `f(n)` that belongs to the set `Θ(g(n))` has the positive constants c<sub>1</sub>, c<sub>2</sub> such that `f(n)` lies in between c<sub>1</sub>g(n) and c<sub>2</sub>g(n) for all `n >= n0` then `f(n)` is said to be asymptotically tight bound.
